@@ -4,7 +4,11 @@
 #include <locale.h>
 #include <climits>
 #include <queue>
-std::queue <int> Q;
+
+using namespace std;
+
+queue <int> Q;
+
 int** createG(int size) {
     int** G = NULL;
     G = (int**)malloc(size * sizeof(int*));
@@ -13,7 +17,7 @@ int** createG(int size) {
     }
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            G[i][j] = rand() % 6;
+            G[i][j] = rand() % 100002;
             if (i == j) {
                 G[i][j] = 0;
             }
@@ -63,13 +67,13 @@ int main()
     int* dist = NULL;
     dist = (int*)malloc(size * sizeof(int*));
     for (int i = 0; i < size; i++) {
-        dist[i] = 100000;
+        dist[i] = INT_MAX;
     }
 
     bfs(G1, size, v, dist);
 
     for (int i = 0; i < size; i++) {
-        printf("расстояние от %d до %d вершины = %d \n", v, i, dist[i]);
+        printf("Расстояние от %d до %d вершины = %d \n", v, i, dist[i]);
     }
 
     return 0;
